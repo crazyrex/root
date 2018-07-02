@@ -216,19 +216,6 @@ exports.deleteFile = function(req, res) {
 
         });
 
-
-}
-else{
-          res.status(500).send("error");
-
-}
-
-
-
-
-
-
-
       }
     });
   return res;

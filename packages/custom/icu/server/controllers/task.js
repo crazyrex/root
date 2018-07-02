@@ -334,10 +334,6 @@ var byAssign = function(req, res, next) {
     });
 };
 
-      next();
-    });
-}
-
 
 function getTasksDueTodayQuery(req, callback) {
   var dates = new Date().getThisDay();
