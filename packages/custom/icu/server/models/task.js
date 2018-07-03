@@ -6,6 +6,11 @@ var mongoose = require('mongoose'),
   request = require('request');
 
 var TaskSchema = new Schema({
+  customId: {
+    type: String,
+    unique: false,
+    dropDups: true
+  },
   created: {
     type: Date,
     default: Date.now
