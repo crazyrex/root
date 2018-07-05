@@ -75,53 +75,38 @@ function FolderDetailsController($scope, entity, tasks, people, folders, offices
   }
 
   $scope.onStar = function(value) {
-    boldedUpdate($scope.item, 'updated').then(updatedItem => {
-      $scope.item.bolded = updatedItem.bolded;
-      FoldersService.star($scope.item).then(function () {
-        navigateToDetails($scope.item);
-        // "$scope.item.star" will be change in 'ProjectsService.star' function
-      });
-    })
+    FoldersService.star($scope.item).then(function () {
+      navigateToDetails($scope.item);
+      // "$scope.item.star" will be change in 'ProjectsService.star' function
+    });
   }
 
   $scope.onStatus = function(value) {
-    boldedUpdate($scope.item, 'updated').then(updatedItem => {
-      $scope.item.bolded = updatedItem.bolded;
-      $scope.item.status = value;
-      $scope.update($scope.item, {
-        name: 'status'
-      })
+    $scope.item.status = value;
+    $scope.update($scope.item, {
+      name: 'status'
     })
   }
 
   $scope.onColor = function(value) {
-    boldedUpdate($scope.item, 'updated').then(updatedItem => {
-      $scope.item.bolded = updatedItem.bolded;
-      $scope.update($scope.item, value);
-    })
+    $scope.update($scope.item, value);
   }
 
   $scope.onWantToCreateRoom = function() {
-    boldedUpdate($scope.item, 'updated').then(updatedItem => {
-      $scope.item.bolded = updatedItem.bolded;
-      if ($scope.item.WantRoom == false) {
-        $scope.item.WantRoom = true;
+    if ($scope.item.WantRoom == false) {
+      $scope.item.WantRoom = true;
 
-        $scope.update($scope.item, context);
+      $scope.update($scope.item, context);
 
-        FoldersService.WantToCreateRoom($scope.item).then(function () {
-          navigateToDetails($scope.item);
-        });
-      }
-    })
+      FoldersService.WantToCreateRoom($scope.item).then(function () {
+        navigateToDetails($scope.item);
+      });
+    }
   }
 
   $scope.onTags = function(value) {
-    boldedUpdate($scope.item, 'updated').then(updatedItem => {
-      $scope.item.bolded = updatedItem.bolded;
-      $scope.item.tags = value;
-      $scope.update($scope.folder);
-    })
+    $scope.item.tags = value;
+    $scope.update($scope.folder);
   }
 
   // ==================================================== Menu events ==================================================== //
@@ -213,11 +198,8 @@ function FolderDetailsController($scope, entity, tasks, people, folders, offices
         newVal: nVal,
         action: 'renamed'
       };
-      boldedUpdate($scope.item, 'updated').then(updatedItem => {
-        $scope.item.bolded = updatedItem.bolded;
-        $scope.delayedUpdate($scope.item, context);
-        FoldersService.currentFolderName = $scope.item.title;
-      })
+      $scope.delayedUpdate($scope.item, context);
+      FoldersService.currentFolderName = $scope.item.title;
     }
   });
 
@@ -231,10 +213,7 @@ function FolderDetailsController($scope, entity, tasks, people, folders, offices
         oldVal: oVal,
         newVal: nVal,
       };
-      boldedUpdate($scope.item, 'updated').then(updatedItem => {
-        $scope.item.bolded = updatedItem.bolded;
-        $scope.delayedUpdate($scope.item, context);
-      })
+      $scope.delayedUpdate($scope.item, context);
     }
   });
 
